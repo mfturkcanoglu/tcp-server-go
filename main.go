@@ -106,7 +106,17 @@ func contact(conn net.Conn) {
 }
 
 func apply(conn net.Conn) {
-	body := standartPage("apply")
+	body := `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title></title></head><body>
+		<strong>APPLY</strong><br>
+		<a href="/">index</a><br>
+		<a href="/about">about</a><br>
+		<a href="/contact">contact</a><br>
+		<a href="/apply">apply</a><br>
+		<form method="POST" action="/apply">
+			<input type="submit" value="apply">
+		</form>
+		</body>
+		</html>`
 
 	fmt.Fprint(conn, "HTTP/1.1 200 OK\r\n")
 	fmt.Fprintf(conn, "Content-Length: %d\r\n", len(body))
